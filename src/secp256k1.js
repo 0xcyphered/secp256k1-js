@@ -31,7 +31,7 @@
         let R = [_0,_0,_0]
 
         //return (0,0) if d=0 or (x1,y1)=(0,0)
-        if (_d == 0 || ((_p[0] == 0) && (_p[1] == 0)) ) {
+        if (_d.toString() == '0' || ((_p[0].toString() == '0') && (_p[1].toString() == '0')) ) {
             return R
         }
         let T = [
@@ -74,9 +74,9 @@
         while (true) {
             const k = rnd(P)
             const R = mulG(k)
-            if (R[0] == 0) continue
+            if (R[0].toString() == '0') continue
             const s = mulmod(invmod(k, N), addmod(z, mulmod(R[0], d, N), N), N)
-            if (s == 0) continue
+            if (s.toString() == '0') continue
             //FIXME: why do I need this
             if (s.testn(255)) continue
             return {r: toHex(R[0]), s: toHex(s), v: R[1].testn(0) ? 1 : 0}
@@ -92,7 +92,7 @@
     //point doubling for elliptic curve in jacobian coordinates
     //formula from https://en.wikibooks.org/wiki/Cryptography/Prime_Curve/Jacobian_Coordinates
     function ecdouble(_p) {
-        if (_p[1] == 0) {
+        if (_p[1].toString() == '0') {
             //return point at infinity
             return [_1, _1, _0]
         }
@@ -117,7 +117,7 @@
     // point addition for elliptic curve in jacobian coordinates
     // formula from https://en.wikibooks.org/wiki/Cryptography/Prime_Curve/Jacobian_Coordinates
     function ecadd(_p, _q) {
-        if (_q[0] == 0 && _q[1] == 0 && _q[2] == 0) {
+        if (_q[0].toString() == '0' && _q[1].toString() == '0' && _q[2].toString() == '0') {
             return _p
         }
 
