@@ -184,7 +184,7 @@
     function ecrecover(recId, sigr, sigs, message) {
         // 1.0 For j from 0 to h   (h == recId here and the loop is outside this function)
         //   1.1 Let x = r + jn
-        const x = addmod(uint256(sigr), P.muln(recId >> 1), P)
+        const x = addmod(sigr, P.muln(recId >> 1), P)
         //   1.2. Convert the integer x to an octet string X of length mlen using the conversion routine
         //        specified in Section 2.3.7, where mlen = ⌈(log2 p)/8⌉ or mlen = ⌈m/8⌉.
         //   1.3. Convert the octet string (16 set binary digits)||X to an elliptic curve point R using the
